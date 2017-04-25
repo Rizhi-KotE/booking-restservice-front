@@ -1,8 +1,10 @@
 import React from "react";
 import api from "./MeetingRestClient";
-import {Pagination, Table} from "react-bootstrap";
+import {ControlLabel, FormControl, FormGroup, Pagination, Table} from "react-bootstrap";
 import update from "react-addons-update";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
+import DateTime from "react-datetime";
 
 class MeetingListContent extends React.Component {
     render() {
@@ -48,6 +50,84 @@ class MeetingPagination extends React.Component {
     }
 }
 
+class MeetingFilterConfig extends React.Component {
+    beginTimeChanged = moment => {
+        this.props.onChange(update(this.props.filter, {
+            beginTime: {$set: moment}
+        }))
+    };
+
+    endTimeChanged = moment => {
+        this.props.onChange(update(this.props.filter, {
+            endTime: {$set: moment}
+        }))
+    };
+
+    employerFilterChange = emp => {
+        this.props.onChange(update(this.props.filter, {
+            user: {$set: emp}
+        }))
+    };
+
+    render = () =>
+        <div className="filtersConfig">
+            <table>
+                <tbody>
+                <tr>
+                    <td className="filter">
+                        <div className="exist_part">
+                            <span>Time</span>
+                            <div className="drop_part ">
+                                <FormGroup>
+                                    <ControlLabel>Begin</ControlLabel>
+                                    <DateTime
+                                        type="datetime"
+                                        dateFormat="YYYY-MM-DD"
+                                        timeFormat="HH:mm"
+                                        value={this.props.startTime}
+                                        onChange={moment => this.beginTimeChanged(moment)}/>
+                                </FormGroup>
+                                <FormGroup>
+                                    <ControlLabel>End</ControlLabel>
+                                    <DateTime
+                                        type="datetime"
+                                        dateFormat="YYYY-MM-DD"
+                                        timeFormat="HH:mm"
+                                        value={this.props.startTime}
+                                        onChange={moment => this.endTimeChanged(moment)}/>
+                                </FormGroup>
+                            </div>
+                        </div>
+                    </td>
+                    <td className="filter">
+                        <div className="exist_part">
+                            <span>Employer</span>
+                            <div className="drop_part ">
+                                <form>
+                                    <FormGroup>
+                                        <ControlLabel>Name pattern</ControlLabel>
+                                        <FormControl onChange={pattern => this.employerFilterChange(pattern)}/>
+                                    </FormGroup>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+}
+
+MeetingFilterConfig.propTypes = {
+    filter: PropTypes.object,
+    onChange: PropTypes.func.isRequired
+};
+
+MeetingFilterConfig.defaultProps = {
+    filter: {}
+};
+
 export default class MeetingsComponent extends React.Component {
     constructor() {
         super();
@@ -77,7 +157,24 @@ export default class MeetingsComponent extends React.Component {
         this.changePage(1)
     }
 
+    changeFilter = filter => {
+        let newFilter = update(filter, {
+            page: {$set: 1}
+        });
+        api.meeting.get(newFilter)
+            .then(data =>
+                this.setState(update(this.state, {
+                    meetings: {$set: data.content},
+                    page: {$set: data},
+                    filter: {$set: newFilter}
+                }))
+            );
+    };
+
     render = () => <div>
+        <MeetingFilterConfig
+            filter={this.state.filter}
+            onChange={this.changeFilter.bind(this)}/>
         <MeetingListContent meetings={this.state.meetings}/>
         <MeetingPagination page={this.state.page}
                            handleSelect={this.changePage.bind(this)}/>

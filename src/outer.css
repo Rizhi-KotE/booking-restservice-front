@@ -1,0 +1,53 @@
+
+
+.boxConfigurator {
+    margin: 20px 0 0
+}
+
+.filtersConfig {
+    background: #efede9;
+    padding: 0 0 17px
+}
+
+.bottomConfig {
+    overflow: hidden;
+    zoom:1;background: #d9d7d4;
+    padding: 10px 0 7px 20px
+}
+
+.filtersConfig table {
+    width: 100%
+}
+
+.filtersConfig td {
+    border: 0
+}
+
+.filtersConfig td.filter {
+    background: 0 0
+}
+
+.filtersConfig {
+    display: block;
+    font: 15px/18px Calibri;
+    color: #333;
+    padding: 15px 0 16px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #EFEDE9;
+    border-right: none;
+    margin: 0
+}
+
+.filtersConfig {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle;
+    zoom:1;width: 7px;
+    height: 4px;
+}
+
+.filtersConfig .filtersConfig__i:hover u {
+    cursor: pointer;
+    color: #4c4c4c
+}
