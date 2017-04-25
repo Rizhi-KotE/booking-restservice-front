@@ -2,21 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
-import {Route, Router} from "react-router";
+import {BrowserRouter, Route, Link} from "react-router-dom";
 import createBrowserHistory from "history/createBrowserHistory";
-import MeetingList from "./MeetingList";
+import MeetingsComponent from "./MeetingList";
 import MeetingCreateForm from "./MeetingCreateForm";
 
 
 const history = createBrowserHistory();
 
 ReactDOM.render(
-    <Router history={history}>
-        <Route path="/" component={App}>
-            <Route path='*' component={MeetingList}/>
-            <Route path='meeting' component={MeetingList}/>
-            <Route path='meeting/create' component={MeetingCreateForm}/>
-        </Route>
-    </Router>,
+    <BrowserRouter history={history}>
+        <div className="container">
+            <Route exact path='/' component={MeetingsComponent}/>
+            <Route exact path='/meeting' component={MeetingsComponent}/>
+            <Route exact path='/meeting/new' component={MeetingCreateForm}/>
+        </div>
+    </BrowserRouter>,
     document.getElementById('root')
 );

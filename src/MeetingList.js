@@ -1,5 +1,8 @@
 import React from "react";
+import api from "./MeetingRestClient";
 import {Pagination, Table} from "react-bootstrap";
+import update from "react-addons-update";
+import {Link} from "react-router-dom";
 
 class MeetingListContent extends React.Component {
     render() {
@@ -45,11 +48,39 @@ class MeetingPagination extends React.Component {
     }
 }
 
-export default class MeetingList extends React.Component {
+export default class MeetingsComponent extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            meetings: [],
+            page: {},
+            filter: {
+                page: 1,
+                'page-size': 5
+            }
+        }
+    }
+
+    changePage(page) {
+        let newFilter = update(this.state.filter, {page: {$set: page}});
+        api.meeting.get(newFilter)
+            .then(data =>
+                this.setState(update(this.state, {
+                    meetings: {$set: data.content},
+                    page: {$set: data},
+                    filter: {$set: newFilter}
+                }))
+            );
+    }
+
+    componentDidMount() {
+        this.changePage(1)
+    }
+
     render = () => <div>
-        <MeetingListContent meetings={this.props.meetings}/>
-        <MeetingPagination
-            page={this.props.page}
-            handleSelect={this.props.handleSelect}/>
+        <MeetingListContent meetings={this.state.meetings}/>
+        <MeetingPagination page={this.state.page}
+                           handleSelect={this.changePage.bind(this)}/>
+        <Link to="/meeting/new" className="float-button">+</Link>
     </div>
 }

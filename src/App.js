@@ -1,8 +1,7 @@
 import React from "react";
-import MeetingList from "./MeetingList";
 
 import api from "./MeetingRestClient";
-
+import {Link} from 'react-router'
 
 class App extends React.Component {
     constructor() {
@@ -29,7 +28,20 @@ class App extends React.Component {
     }
 
     render() {
-        return <div>Hello</div>
+
+        return (
+            <div>
+                <header>App</header>
+                <menu>
+                    <ul>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/repos">Repos</Link></li>
+                    </ul>
+                </menu>
+                {this.props.children}
+            </div>
+        );
+
     }
 }
 

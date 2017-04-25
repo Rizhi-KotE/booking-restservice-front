@@ -1,5 +1,28 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.float-button {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    z-index: 2;
+    bottom: 10%;
+    right: 10%;
+    background: #D43A2F;
+    color: white;
+    font-size: 34px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 50px;
+    border-radius: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.float-button:hover {
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
