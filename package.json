@@ -5,9 +5,13 @@
   "dependencies": {
     "another-rest-client": "^0.3.2",
     "bootstrap": "^3.3.7",
+    "moment-js": "^1.1.15",
+    "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-addons-update": "^15.5.2",
     "react-bootstrap": "^0.30.10",
+    "react-bootstrap-datetimepicker": "0.0.22",
+    "react-datetime": "^2.8.10",
     "react-dom": "^15.5.4",
     "react-pagination-table": "^1.0.5",
     "react-router": "^4.1.1",
