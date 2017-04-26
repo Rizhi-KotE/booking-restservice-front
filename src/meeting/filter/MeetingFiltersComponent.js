@@ -31,59 +31,55 @@ export default class MeetingFilterConfig extends React.Component {
     };
 
     render = () =>
-        <div className="filtersConfig">
+        <div className="filtersConfig collapse navbar-collapse">
             Filters
-            <td className="filter">
-                <div className="exist_part">
-                    <span>Time</span>
-                    <div className="drop_part ">
+            <td className="dropdown">
+                <span>Time</span>
+                <div className="dropdown-content ">
+                    <FormGroup>
+                        <ControlLabel>Begin</ControlLabel>
+                        <DateTime
+                            type="datetime"
+                            dateFormat="YYYY-MM-DD"
+                            timeFormat="HH:mm"
+                            value={this.props.startTime}
+                            onChange={moment => this.beginTimeChanged(moment)}/>
+                    </FormGroup>
+                    <FormGroup>
+                        <ControlLabel>End</ControlLabel>
+                        <DateTime
+                            type="datetime"
+                            dateFormat="YYYY-MM-DD"
+                            timeFormat="HH:mm"
+                            value={this.props.startTime}
+                            onChange={moment => this.endTimeChanged(moment)}/>
+                    </FormGroup>
+                    <FormControl type="date"/>
+                </div>
+            </td>
+            <td className="dropdown">
+                <span>Employer</span>
+                <div className="dropdown-content ">
+                    <form>
                         <FormGroup>
-                            <ControlLabel>Begin</ControlLabel>
-                            <DateTime
-                                type="datetime"
-                                dateFormat="YYYY-MM-DD"
-                                timeFormat="HH:mm"
-                                value={this.props.startTime}
-                                onChange={moment => this.beginTimeChanged(moment)}/>
+                            <ControlLabel>Name pattern</ControlLabel>
+                            <FormControl onChange={event => this.employerFilterChange(event.target.value)}/>
                         </FormGroup>
+                    </form>
+                </div>
+            </td>
+            <td className="dropdown">
+                <span>Room №</span>
+                <div className="dropdown-content ">
+                    <form>
                         <FormGroup>
-                            <ControlLabel>End</ControlLabel>
-                            <DateTime
-                                type="datetime"
-                                dateFormat="YYYY-MM-DD"
-                                timeFormat="HH:mm"
-                                value={this.props.startTime}
-                                onChange={moment => this.endTimeChanged(moment)}/>
+                            <ControlLabel>Room number</ControlLabel>
+                            <FormControl onChange={event => this.roomFilterChange(event.target.value)}/>
                         </FormGroup>
-                        <FormControl type="date"/>
-                    </div>
+                    </form>
                 </div>
             </td>
-            <td className="filter">
-                <div className="exist_part">
-                    <span>Employer</span>
-                    <div className="drop_part ">
-                        <form>
-                            <FormGroup>
-                                <ControlLabel>Name pattern</ControlLabel>
-                                <FormControl onChange={event => this.employerFilterChange(event.target.value)}/>
-                            </FormGroup>
-                        </form>
-                    </div>
-                </div>
-            </td>
-            <td className="filter">
-                <div className="exist_part">
-                    <span>Room №</span>
-                    <div className="drop_part ">
-                        <form>
-                            <FormGroup>
-                                <ControlLabel>Room number</ControlLabel>
-                                <FormControl onChange={event => this.roomFilterChange(event.target.value)}/>
-                            </FormGroup>
-                        </form>
-                    </div>
-                </div>
-            </td>
-        </div>
+        </
+            div
+        >
 }

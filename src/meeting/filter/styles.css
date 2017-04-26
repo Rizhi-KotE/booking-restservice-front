@@ -1,16 +1,11 @@
 .filtersConfig {
-    background: white;
-    border: 1px solid #EFEDE9;
-    border-top: none;
+    background-color: #c5c5c5;
+    height: 60px;
     padding: 5px 0 0 15px;
-    z-index: 500;
 }
 
 .filtersConfig .filter {
     padding: 5px 5px 0 0;
-    border: 1px solid #EFEDE9;
-    border-bottom: none;
-    width: 150px;
 }
 
 .filtersConfig .filter .exist_part span {
@@ -49,5 +44,24 @@
 
 .filtersConfig .filter .exist_part:hover .drop_part {
     background-color: white;
+    display: block;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
     display: block;
 }
