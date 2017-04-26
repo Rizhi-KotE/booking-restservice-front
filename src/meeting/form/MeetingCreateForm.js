@@ -5,6 +5,7 @@ import api from "../../MeetingRestClient";
 import PropTypes from "prop-types";
 import "react-datetime/css/react-datetime.css";
 import moment from 'moment-js'
+import {Link} from "react-router-dom";
 
 import DateTime from "react-datetime";
 
@@ -149,13 +150,16 @@ export default class MeetingCreateComponent extends React.Component {
     };
 
     render = () =>
-        <MeetingCreateForm
-            users={this.state.users}
-            rooms={this.state.rooms}
-            selectUser={this.selectUser.bind(this)}
-            selectRoom={this.selectRoom.bind(this)}
-            changeTime={this.changeMeetingDate.bind(this)}
-            changeDuration={this.changeDuration.bind(this)}
-            handleSubmit={this.handleSubmit.bind(this)}/>
+    <div><MeetingCreateForm
+        users={this.state.users}
+        rooms={this.state.rooms}
+        selectUser={this.selectUser.bind(this)}
+        selectRoom={this.selectRoom.bind(this)}
+        changeTime={this.changeMeetingDate.bind(this)}
+        changeDuration={this.changeDuration.bind(this)}
+        handleSubmit={this.handleSubmit.bind(this)}/>
+        <Link to="/meeting" className="float-button back"></Link>
+    </div>
+
 
 }

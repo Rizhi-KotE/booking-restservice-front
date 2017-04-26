@@ -5,9 +5,6 @@ import "./styles.css";
 class TableHeader extends React.Component {
     changeOrder = () => {
         this.props.onChange(this.props.column)
-        // if (this.props.order === 'A') this.props.onChange('D');
-        // if (this.props.order === 'D') this.props.onChange(null);
-        // if (this.props.order === null) this.props.onChange('A');
     };
 
     render = () => {
@@ -32,7 +29,7 @@ export default class MeetingListContent extends React.Component {
                 <td>{meeting.meetingDateBegin}</td>
                 <td>{meeting.meetingDateEnd}</td>
                 <td>{meeting.room.id}</td>
-                <td>{meeting.user.id}</td>
+                <td>{meeting.user.username}</td>
             </tr>);
 
 

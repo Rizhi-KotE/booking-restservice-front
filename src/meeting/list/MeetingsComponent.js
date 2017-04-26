@@ -92,17 +92,22 @@ export default class MeetingsComponent extends React.Component {
         this.changeFilter(newState.filter);
     };
 
-    render = () => <div>
-        <MeetingFiltersComponent
-            filter={this.state.filter}
-            onChange={this.changeFilter}/>
-        <MeetingListContent meetings={this.state.meetings}
-                            onChangeSortColumn={this.changeSort.bind(this)}
-                            sortTuple={this.state.sort.sortTuple}
-        />
-        <MeetingPagination page={this.state.page}
-                           handleSelect={this.changePage.bind(this)}
-                           sortTuple={this.state.sort.sortTuple}/>
+    render = () => <div classname="row">
+        <div className="col-sm-3">
+            <MeetingFiltersComponent
+                filter={this.state.filter}
+                onChange={this.changeFilter}/>
+        </div>
+        <div className="col-sm-9">
+            <MeetingListContent meetings={this.state.meetings}
+                                onChangeSortColumn={this.changeSort.bind(this)}
+                                sortTuple={this.state.sort.sortTuple}
+            />
+            <MeetingPagination page={this.state.page}
+                               handleSelect={this.changePage.bind(this)}
+                               sortTuple={this.state.sort.sortTuple}/>
+        </div>
+
         <Link to="/meeting/new" className="float-button">+</Link>
     </div>
 }

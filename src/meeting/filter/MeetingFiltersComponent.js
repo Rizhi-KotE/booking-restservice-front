@@ -31,55 +31,42 @@ export default class MeetingFilterConfig extends React.Component {
     };
 
     render = () =>
-        <div className="filtersConfig collapse navbar-collapse">
+        <form className="dropdown">
             Filters
-            <td className="dropdown">
+            <FormGroup>
                 <span>Time</span>
-                <div className="dropdown-content ">
-                    <FormGroup>
-                        <ControlLabel>Begin</ControlLabel>
-                        <DateTime
-                            type="datetime"
-                            dateFormat="YYYY-MM-DD"
-                            timeFormat="HH:mm"
-                            value={this.props.startTime}
-                            onChange={moment => this.beginTimeChanged(moment)}/>
-                    </FormGroup>
-                    <FormGroup>
-                        <ControlLabel>End</ControlLabel>
-                        <DateTime
-                            type="datetime"
-                            dateFormat="YYYY-MM-DD"
-                            timeFormat="HH:mm"
-                            value={this.props.startTime}
-                            onChange={moment => this.endTimeChanged(moment)}/>
-                    </FormGroup>
-                    <FormControl type="date"/>
-                </div>
-            </td>
-            <td className="dropdown">
+                <FormGroup>
+                    <ControlLabel>Begin</ControlLabel>
+                    <DateTime
+                        type="datetime"
+                        dateFormat="YYYY-MM-DD"
+                        timeFormat="HH:mm"
+                        value={this.props.startTime}
+                        onChange={moment => this.beginTimeChanged(moment)}/>
+                </FormGroup>
+                <FormGroup>
+                    <ControlLabel>End</ControlLabel>
+                    <DateTime
+                        type="datetime"
+                        dateFormat="YYYY-MM-DD"
+                        timeFormat="HH:mm"
+                        value={this.props.startTime}
+                        onChange={moment => this.endTimeChanged(moment)}/>
+                </FormGroup>
+            </FormGroup>
+            <FormGroup>
                 <span>Employer</span>
-                <div className="dropdown-content ">
-                    <form>
-                        <FormGroup>
-                            <ControlLabel>Name pattern</ControlLabel>
-                            <FormControl onChange={event => this.employerFilterChange(event.target.value)}/>
-                        </FormGroup>
-                    </form>
-                </div>
-            </td>
-            <td className="dropdown">
+                <FormGroup>
+                    <ControlLabel>Name pattern</ControlLabel>
+                    <FormControl onChange={event => this.employerFilterChange(event.target.value)}/>
+                </FormGroup>
+            </FormGroup>
+            <FormGroup>
                 <span>Room №</span>
-                <div className="dropdown-content ">
-                    <form>
-                        <FormGroup>
-                            <ControlLabel>Room number</ControlLabel>
-                            <FormControl onChange={event => this.roomFilterChange(event.target.value)}/>
-                        </FormGroup>
-                    </form>
-                </div>
-            </td>
-        </
-            div
-        >
+                <FormGroup>
+                    <ControlLabel>Room number</ControlLabel>
+                    <FormControl onChange={event => this.roomFilterChange(event.target.value)}/>
+                </FormGroup>
+            </FormGroup>
+        </form>
 }
