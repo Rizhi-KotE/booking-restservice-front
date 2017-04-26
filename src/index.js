@@ -4,8 +4,8 @@ import App from "./App";
 import "./index.css";
 import {BrowserRouter, Route, Link} from "react-router-dom";
 import createBrowserHistory from "history/createBrowserHistory";
-import MeetingsComponent from "./MeetingList";
-import MeetingCreateForm from "./MeetingCreateForm";
+import MeetingsComponent from "./meeting/list/MeetingsComponent";
+import MeetingCreateForm from "./meeting/form/MeetingCreateForm";
 
 
 const history = createBrowserHistory();

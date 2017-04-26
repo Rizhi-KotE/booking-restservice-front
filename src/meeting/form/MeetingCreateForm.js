@@ -1,7 +1,7 @@
 import React from "react";
 import {ControlLabel, FormControl, FormGroup} from "react-bootstrap";
 import update from "react-addons-update";
-import api from "./MeetingRestClient";
+import api from "../../MeetingRestClient";
 import PropTypes from "prop-types";
 import "react-datetime/css/react-datetime.css";
 import moment from 'moment-js'

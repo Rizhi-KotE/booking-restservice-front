@@ -1,0 +1,29 @@
+.meeting-list-header {
+    position: relative;
+}
+
+.meeting-list-header:hover {
+    background-color: gainsboro;
+}
+
+.meeting-list-header:after {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: block;
+    font-family: 'Glyphicons Halflings';
+    opacity: 0.5
+}
+
+.meeting-list-header:after {
+    opacity: 0.2;
+    content: "\e150"
+}
+
+.meeting-list-header.ASC:after {
+    content: "\e155"
+}
+
+.meeting-list-header.DESC:after {
+    content: "\e156"
+}

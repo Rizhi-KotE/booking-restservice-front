@@ -1,0 +1,53 @@
+.filtersConfig {
+    background: white;
+    border: 1px solid #EFEDE9;
+    border-top: none;
+    padding: 5px 0 0 15px;
+    z-index: 500;
+}
+
+.filtersConfig .filter {
+    padding: 5px 5px 0 0;
+    border: 1px solid #EFEDE9;
+    border-bottom: none;
+    width: 150px;
+}
+
+.filtersConfig .filter .exist_part span {
+    font-weight: 700;
+}
+
+.filtersConfig .filter .exist_part {
+    display: block;
+    font: 15px/18px Calibri;
+    color: #333;
+    padding: 15px 0 16px;
+    width: 100%;
+    text-align: center;
+}
+
+.filtersConfig .filter:hover {
+    border: 1px solid #EFEDE9;
+    border-right: none;
+    background-color: white;
+}
+
+.filtersConfig .filter .exist_part {
+    margin: 0;
+    position: relative;
+    height: 50px;
+    border: none;
+}
+
+.filtersConfig .filter .exist_part .drop_part {
+    position: absolute;
+    top: 50px;
+    padding: 15px 15px;
+    width: 200px;
+    display: none;
+}
+
+.filtersConfig .filter .exist_part:hover .drop_part {
+    background-color: white;
+    display: block;
+}
